@@ -16,7 +16,7 @@ userSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password)
 }
 
-//Password Hash Middlewarey
+//Password Hash Middleware
 userSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     const salt = await bcrypt.genSaltSync(10)
