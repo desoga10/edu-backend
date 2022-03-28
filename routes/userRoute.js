@@ -6,7 +6,6 @@ const asyncHandler = require('express-async-handler')
 const jsonWebToken = require('../utils/jsonWebToken')
 
 router.post('/register', asyncHandler(async (req, res) => {
-
   const { email, password } = req.body
   const userExists = await User.findOne({ email })
 
