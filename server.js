@@ -5,6 +5,8 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 const notFound = require('./middleware/notFound')
 const serverError = require('./middleware/serverError')
+const api = require('./routes/userRoute')
+const courseRoutes = require('./routes/courseRoute')
 const app = express()
 
 
@@ -30,6 +32,10 @@ app.use(morgan("common"))
 
 //Invalid Route Error Handler
 app.use(notFound);
+
+//configure api from api route
+app.use('/api', api)
+app.use('/api/course', courseRoutes)
 
 //Server Error Middleware Handler
 app.use(serverError)
